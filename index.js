@@ -1,14 +1,43 @@
-import { fetchJSON } from './functions/api.js';
 import { createElement } from './functions/dom.js';
-import { ToDoList } from './components/todolist.js';
+import { TodoList } from './components/todolist.js';
 
 try {
-  const todos = await fetchJSON(
-    'https://jsonplaceholder.typicode.com/todos?_limit=5'
-  );
+  const todos = [
+    {
+      userId: 1,
+      id: 1,
+      title: 'delectus aut autem',
+      completed: false,
+    },
+    {
+      userId: 1,
+      id: 2,
+      title: 'quis ut nam facilis et officia qui',
+      completed: false,
+    },
+    {
+      userId: 1,
+      id: 3,
+      title: 'fugiat veniam minus',
+      completed: false,
+    },
+    {
+      userId: 1,
+      id: 4,
+      title: 'et porro tempora',
+      completed: true,
+    },
+    {
+      userId: 1,
+      id: 5,
+      title: 'laboriosam mollitia et enim quasi adipisci quia provident illum',
+      completed: false,
+    },
+  ];
+  const list = new TodoList(todos);
   list.appendTo(document.querySelector('#todolist'));
-  console.log(todos);
 } catch (e) {
+  debugger;
   const alertElement = createElement('div', {
     class: 'alert alert-danger m-2',
     role: 'alert',
